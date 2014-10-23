@@ -1,0 +1,6 @@
+SRPMS/*
+BUILD/*
+RPMS/*
+BUILDROOT/*
+MOCK/*
+SOURCES/*.tgz
