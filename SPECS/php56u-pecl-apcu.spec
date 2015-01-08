@@ -111,7 +111,6 @@ BuildArch:     noarch
 Requires:      %{name} = %{version}-%{release}
 Requires:      mod_php56u
 Requires:      %{php_base}-gd
-Requires:      httpd
 Conflicts:     apcu-panel < %{version}
 Provides:      apcu-panel = %{version}
 Provides:      apc-panel = %{version}
