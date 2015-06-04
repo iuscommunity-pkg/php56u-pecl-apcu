@@ -15,7 +15,7 @@
 Name:           %{php_base}-pecl-%{pecl_name}
 Summary:        APC User Cache
 Version:        4.0.7
-Release:        4.ius%{?dist}
+Release:        5.ius%{?dist}
 Source0:        http://pecl.php.net/get/%{pecl_name}-%{version}.tgz
 Source1:        %{pecl_name}.ini
 Source2:        %{pecl_name}-panel.conf
@@ -260,6 +260,9 @@ fi
 
 
 %changelog
+* Thu Jun 04 2015 Ben Harper <ben.harper@rackspace.com> - 4.0.7-5.ius
+- rebuild against php56u-5.6.9, see launchpad bug 1461973
+
 * Thu Jan 08 2015 Carl George <carl.george@rackspace.com> - 4.0.7-4.ius
 - Remove redundant dependency on httpd
 
