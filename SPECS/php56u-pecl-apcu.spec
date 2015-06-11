@@ -15,7 +15,7 @@
 Name:           %{php_base}-pecl-%{pecl_name}
 Summary:        APC User Cache
 Version:        4.0.7
-Release:        5.ius%{?dist}
+Release:        6.ius%{?dist}
 Source0:        http://pecl.php.net/get/%{pecl_name}-%{version}.tgz
 Source1:        %{pecl_name}.ini
 Source2:        %{pecl_name}-panel.conf
@@ -176,6 +176,8 @@ install -D -m 644 package.xml %{buildroot}%{pecl_xmldir}/%{name}.xml
 # Pages
 install -D -m 644 -p NTS/apc.php  \
         %{buildroot}%{_datadir}/apcu-panel/index.php
+#add apc.php to main package for user configured non Apache webservers
+install -D -m 644 -p NTS/apc.php  %{buildroot}%{pecl_docdir}/%{pecl_name}/apc.php
 # Apache config
 install -D -m 644 -p %{SOURCE2} \
         %{buildroot}%{_sysconfdir}/httpd/conf.d/apcu-panel.conf
@@ -260,6 +262,10 @@ fi
 
 
 %changelog
+* Thu Jun 11 2015 Ben Harper <ben.harper@rackspace.com> - 4.0.7-6.ius
+- add apc.php to main package for user configured non Apache webservers
+  see https://github.com/iuscommunity-pkg/php55u-pecl-apcu/issues/2
+
 * Thu Jun 04 2015 Ben Harper <ben.harper@rackspace.com> - 4.0.7-5.ius
 - rebuild against php56u-5.6.9, see launchpad bug 1461973
 
