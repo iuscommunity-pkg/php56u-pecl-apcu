@@ -17,7 +17,7 @@
 Name:           %{php_base}-pecl-%{pecl_name}
 Summary:        APC User Cache
 Version:        4.0.11
-Release:        1.ius%{?dist}
+Release:        2.ius%{?dist}
 Source0:        http://pecl.php.net/get/%{pecl_name}-%{version}.tgz
 Source1:        %{pecl_name}.ini
 Source2:        %{pecl_name}-panel.conf
@@ -69,11 +69,10 @@ Provides:       %{php_base}-pecl-apc%{?_isa} = %{version}
 Provides:       %{php_base}-pecl(APC) = %{version}
 Provides:       %{php_base}-pecl(APC)%{?_isa} = %{version}
 
-%if 0%{?fedora} < 20 && 0%{?rhel} < 7
-# Filter private shared
+# RPM 4.8
 %{?filter_provides_in: %filter_provides_in %{_libdir}/.*\.so$}
+%{?filter_provides_in: %filter_provides_in %{php_ztsextdir}/.*\.so$}
 %{?filter_setup}
-%endif
 
 
 %description
@@ -269,6 +268,9 @@ fi
 
 
 %changelog
+* Thu Jun 16 2016 Ben Harper <ben.harper@rackspace.com> - 4.0.11-2.ius
+- update filters to include zts
+
 * Thu Apr 21 2016 Ben Harper <ben.harper@rackspace.com> - 4.0.11-1.ius
 - Latest upstream
 
